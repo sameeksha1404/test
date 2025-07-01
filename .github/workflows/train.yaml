@@ -1,0 +1,19 @@
+name: train ml workflow
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+jobs:
+  train:
+    runs-on: ubantu@latest
+    steps:
+      - name: checkout repository
+        uses: actions/checkout@v3
+      - name: set up python
+        uses: actions/setup-python@v4
+        with:
+          python-version:3.9
+      - name: run the files
+        run: pip install -r requirments.txt
+      - name : train model
+        run: python train_model.py 
